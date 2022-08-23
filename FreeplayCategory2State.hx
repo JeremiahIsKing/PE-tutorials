@@ -45,6 +45,7 @@ class FreeplayCategory2State extends MusicBeatState{
 
 	override function create()
 	{
+                removeSong(songs);
 		addSong('Tutorial', 1, 'gf', FlxColor.RED);
 		addSong('World', 2, 'bf', FlxColor.BLUE);
 		Paths.clearStoredMemory();
@@ -199,6 +200,10 @@ class FreeplayCategory2State extends MusicBeatState{
 	{
 		songs.push(new SongMetadataCool(songName, weekNum, songCharacter, color));
 	}
+        public function removeSong(songName:String, weekNum:Int, songCharacter:String, color:Int)
+        {
+                songs.remove(new SongMetadata(songName, weekNum, songCharacter, color));
+        }
 
 	function weekIsLocked(name:String):Bool {
 		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
